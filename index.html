@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UK Student Life Admin Guide — Across the Border CIC</title>
+<meta name="description" content="Your complete guide to the administrative side of UK student life — housing, work rights, money, tech tools, and more. By Across the Border CIC.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary:  #2E4756;
+  --lilly:    #1A69B2;
+  --rose:     #981451;
+  --orange:   #f05d23;
+  --lotus:    #D58CAF;
+  --blue:     #a9dceb;
+  --olive:    #a5aa80;
+  --cream:    #fff5d9;
+  --dusty:    #d8c8b8;
+  --purple:   #bbaadd;
+  --gold:     #d4a017;
+  --grey:     #4a4a4a;
+  --white:    #ffffff;
+  --offwhite: #f8f4ed;
+  --shadow:   0 8px 40px rgba(46,71,86,0.12);
+  --shadow-lg:0 20px 60px rgba(46,71,86,0.2);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:#1a1a1a;overflow-x:hidden}
+
+/* ── PROGRESS BAR ── */
+#progress-bar{position:fixed;top:0;left:0;height:4px;background:linear-gradient(90deg,var(--rose),var(--orange),var(--gold),var(--lilly),var(--lotus));width:0%;z-index:9999;transition:width .1s}
+
+/* ── NAV ── */
+nav{position:fixed;top:4px;left:0;right:0;background:rgba(46,71,86,0.97);backdrop-filter:blur(14px);z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:56px}
+.nav-logo{font-family:'DM Serif Display',serif;color:var(--white);font-size:.95rem;display:flex;align-items:center;gap:10px}
+.nav-logo span{background:var(--orange);color:var(--white);font-family:'DM Sans',sans-serif;font-size:.62rem;font-weight:700;padding:3px 8px;border-radius:2px;letter-spacing:.08em;text-transform:uppercase}
+.nav-links{display:flex;gap:1.4rem;list-style:none}
+.nav-links a{color:rgba(255,255,255,0.72);text-decoration:none;font-size:.78rem;font-weight:500;letter-spacing:.04em;border-bottom:2px solid transparent;padding-bottom:2px;transition:all .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--gold);border-bottom-color:var(--gold)}
+
+/* ── HERO ── */
+.hero{min-height:100vh;background:var(--primary);position:relative;overflow:hidden;display:flex;align-items:center;padding-top:60px}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 80% 50%,rgba(26,105,178,0.25) 0%,transparent 60%),radial-gradient(ellipse 50% 70% at 5% 80%,rgba(240,93,35,0.15) 0%,transparent 50%),radial-gradient(ellipse 40% 40% at 90% 10%,rgba(213,140,175,0.12) 0%,transparent 50%)}
+.hero-grid{position:absolute;inset:0;opacity:.04;background-image:linear-gradient(rgba(255,255,255,.5) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.5) 1px,transparent 1px);background-size:60px 60px}
+.hero-content{position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:4rem 2rem;display:grid;grid-template-columns:1.1fr 1fr;gap:4rem;align-items:center}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(212,160,23,.14);border:1px solid rgba(212,160,23,.4);color:var(--gold);font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:6px 14px;border-radius:100px;margin-bottom:1.5rem;animation:fadeUp .8s ease both}
+.hero-eyebrow::before{content:'';width:6px;height:6px;background:var(--gold);border-radius:50%}
+.hero-title{font-family:'Playfair Display',serif;color:var(--white);font-size:clamp(2.4rem,4.5vw,3.8rem);line-height:1.08;font-weight:900;margin-bottom:1.4rem;animation:fadeUp .8s .15s ease both}
+.hero-title em{color:var(--gold);font-style:italic}
+.hero-title span{color:var(--lotus)}
+.hero-sub{color:rgba(255,255,255,.72);font-size:1.05rem;line-height:1.75;margin-bottom:2.5rem;animation:fadeUp .8s .3s ease both}
+.hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;animation:fadeUp .8s .45s ease both}
+.btn-primary{background:var(--orange);color:var(--white);font-weight:700;font-size:.88rem;padding:13px 26px;border-radius:4px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:transform .2s,box-shadow .2s}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(240,93,35,.4)}
+.btn-outline{border:2px solid rgba(255,255,255,.3);color:var(--white);font-weight:600;font-size:.88rem;padding:11px 24px;border-radius:4px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all .2s}
+.btn-outline:hover{border-color:var(--gold);background:rgba(212,160,23,.1)}
+.hero-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;animation:fadeUp .8s .6s ease both}
+.stat-card{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:1.4rem;backdrop-filter:blur(8px)}
+.stat-num{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:700;color:var(--gold);line-height:1;margin-bottom:5px}
+.stat-lbl{color:rgba(255,255,255,.62);font-size:.8rem;line-height:1.4}
+
+/* ── SECTION NAV ── */
+.section-nav{background:var(--white);border-bottom:1px solid rgba(0,0,0,.07);position:sticky;top:60px;z-index:100;overflow-x:auto}
+.section-nav-inner{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex}
+.sec-pill{flex-shrink:0;padding:.9rem 1.3rem;color:var(--grey);font-size:.78rem;font-weight:600;text-decoration:none;border-bottom:3px solid transparent;transition:all .2s;white-space:nowrap;display:flex;align-items:center;gap:5px}
+.sec-pill:hover{color:var(--primary);border-bottom-color:var(--lilly)}
+.sec-pill.active{color:var(--lilly);border-bottom-color:var(--lilly)}
+
+/* ── MAIN LAYOUT ── */
+main{max-width:1200px;margin:0 auto;padding:0 2rem}
+.section-block{padding:4.5rem 0;border-bottom:1px solid rgba(0,0,0,.06)}
+.section-header{margin-bottom:2.8rem}
+.section-tag{display:inline-flex;align-items:center;gap:8px;color:var(--lilly);font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:1rem}
+.section-tag::before{content:'';width:20px;height:2px;background:var(--lilly)}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:700;color:var(--primary);line-height:1.2;margin-bottom:1rem}
+.section-intro{font-size:1.02rem;color:var(--grey);line-height:1.82;max-width:680px}
+
+/* ── FEATURE CARD ── */
+.feature-card{background:var(--white);border-radius:16px;box-shadow:var(--shadow);overflow:hidden;margin-bottom:2rem;display:grid;grid-template-columns:1fr 1fr;min-height:300px;transition:box-shadow .3s,transform .3s}
+.feature-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-3px)}
+.feature-card.reverse{direction:rtl}
+.feature-card.reverse>*{direction:ltr}
+.feature-accent{display:flex;flex-direction:column;justify-content:center;align-items:center;padding:2.8rem 2rem;text-align:center;position:relative;overflow:hidden}
+.feature-accent::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 30% 70%,rgba(212,160,23,.2) 0%,transparent 60%)}
+.feature-icon{font-size:3rem;margin-bottom:1rem;position:relative}
+.feature-accent-title{font-family:'Playfair Display',serif;color:var(--white);font-size:1.3rem;font-weight:700;position:relative;line-height:1.3}
+.feature-body{padding:2.2rem 2.5rem;display:flex;flex-direction:column;justify-content:center}
+.feature-body h3{font-family:'Playfair Display',serif;color:var(--primary);font-size:1.2rem;font-weight:700;margin-bottom:.9rem;line-height:1.3}
+.feature-body p{color:var(--grey);line-height:1.82;font-size:.92rem;margin-bottom:1rem}
+
+/* ── SITE CARDS (resource links) ── */
+.sites-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.2rem;margin:1.8rem 0}
+.site-card{background:var(--white);border-radius:12px;padding:1.5rem;box-shadow:0 4px 20px rgba(46,71,86,.08);border:1px solid rgba(0,0,0,.06);border-top:4px solid;transition:transform .2s,box-shadow .2s;text-decoration:none;display:block;color:inherit}
+.site-card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.site-card-header{display:flex;align-items:center;gap:10px;margin-bottom:.8rem}
+.site-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.site-name{font-weight:700;color:var(--primary);font-size:.95rem}
+.site-type{font-size:.7rem;color:var(--grey);letter-spacing:.06em;text-transform:uppercase}
+.site-desc{font-size:.84rem;color:var(--grey);line-height:1.65;margin-bottom:.9rem}
+.site-link{display:inline-flex;align-items:center;gap:5px;color:var(--lilly);font-size:.8rem;font-weight:600;text-decoration:none}
+.site-link:hover{color:var(--rose)}
+
+/* ── CALLOUT ── */
+.callout{border-radius:12px;padding:1.6rem 1.8rem;display:flex;gap:1rem;align-items:flex-start;margin:1.4rem 0}
+.callout.teal{background:rgba(26,105,178,.07);border:1px solid rgba(26,105,178,.2)}
+.callout.gold{background:rgba(212,160,.08);border:1px solid rgba(212,160,23,.25)}
+.callout.rose{background:rgba(152,20,81,.06);border:1px solid rgba(152,20,81,.2)}
+.callout.navy{background:rgba(46,71,86,.06);border:1px solid rgba(46,71,86,.15)}
+.callout.orange{background:rgba(240,93,35,.06);border:1px solid rgba(240,93,35,.2)}
+.callout-icon{font-size:1.4rem;flex-shrink:0;margin-top:2px}
+.callout-body h4{color:var(--primary);font-size:.92rem;font-weight:700;margin-bottom:.35rem}
+.callout-body p{color:var(--grey);font-size:.88rem;line-height:1.72}
+.callout-body a{color:var(--lilly);font-weight:600;text-decoration:none}
+.callout-body a:hover{text-decoration:underline}
+
+/* ── PULL QUOTE ── */
+.pull-quote{border-left:5px solid var(--orange);padding:1.4rem 1.8rem;margin:2rem 0;background:var(--dusty);border-radius:0 10px 10px 0}
+.pull-quote p{font-family:'DM Serif Display',serif;font-size:1.18rem;color:var(--primary);line-height:1.6;font-style:italic}
+.pull-quote cite{display:block;margin-top:.7rem;font-size:.8rem;color:var(--grey);font-style:normal}
+
+/* ── INFO CARDS 3-COL ── */
+.cards-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.4rem;margin:2rem 0}
+.info-card{background:var(--white);border-radius:12px;padding:1.7rem;box-shadow:0 4px 20px rgba(46,71,86,.08);border:1px solid rgba(0,0,0,.06);position:relative;overflow:hidden;transition:box-shadow .3s,transform .3s}
+.info-card:hover{box-shadow:var(--shadow);transform:translateY(-3px)}
+.info-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px}
+.info-card.blue::before{background:linear-gradient(90deg,var(--lilly),#5ba3d6)}
+.info-card.rose::before{background:linear-gradient(90deg,var(--rose),var(--lotus))}
+.info-card.gold::before{background:linear-gradient(90deg,var(--gold),#e8c050)}
+.info-card.orange::before{background:linear-gradient(90deg,var(--orange),#f4893b)}
+.info-card.olive::before{background:linear-gradient(90deg,var(--olive),#c5c99a)}
+.info-card-icon{font-size:1.8rem;margin-bottom:.9rem}
+.info-card h3{font-family:'Playfair Display',serif;color:var(--primary);font-size:1.05rem;margin-bottom:.7rem;line-height:1.3}
+.info-card p{color:var(--grey);font-size:.86rem;line-height:1.72}
+.info-card a{color:var(--lilly);font-weight:600;text-decoration:none}
+.info-card a:hover{text-decoration:underline}
+
+/* ── TIP BADGE ── */
+.tip-badge{display:inline-flex;align-items:flex-start;gap:10px;background:var(--cream);border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:10px 14px;font-size:.86rem;color:#7a5500;line-height:1.5;margin-top:.8rem}
+.tip-badge::before{content:'💡';flex-shrink:0}
+
+/* ── LINK BTN ── */
+.link-btn{display:inline-flex;align-items:center;gap:7px;background:var(--lilly);color:var(--white);padding:9px 16px;border-radius:6px;text-decoration:none;font-size:.8rem;font-weight:600;transition:background .2s,transform .2s;margin-top:.7rem}
+.link-btn:hover{background:var(--rose);transform:translateY(-1px)}
+.link-btn.gold{background:var(--gold);color:var(--primary)}
+.link-btn.gold:hover{background:#b88a10}
+.link-btn.orange{background:var(--orange)}
+.link-btn.orange:hover{background:var(--rose)}
+
+/* ── DARK INFO PANEL ── */
+.dark-panel{background:var(--primary);border-radius:14px;padding:2rem;margin:1.8rem 0;color:var(--white)}
+.dark-panel h3{font-family:'Playfair Display',serif;font-size:1.15rem;color:var(--gold);margin-bottom:1rem}
+.dark-panel p{color:rgba(255,255,255,.8);font-size:.88rem;line-height:1.78}
+.dark-panel a{color:var(--blue);font-weight:600;text-decoration:none}
+.dark-panel a:hover{text-decoration:underline}
+.dark-panel ul{list-style:none;margin-top:.8rem;display:flex;flex-direction:column;gap:.5rem}
+.dark-panel ul li{display:flex;align-items:flex-start;gap:.7rem;color:rgba(255,255,255,.8);font-size:.88rem;line-height:1.65}
+.dark-panel ul li::before{content:'→';color:var(--gold);flex-shrink:0;margin-top:1px}
+
+/* ── ACCORDION ── */
+.accordion{margin:1.4rem 0}
+.acc-item{background:var(--white);border-radius:10px;margin-bottom:.7rem;box-shadow:0 2px 12px rgba(46,71,86,.06);border:1px solid rgba(0,0,0,.06);overflow:hidden}
+.acc-header{display:flex;align-items:center;gap:12px;padding:1.1rem 1.4rem;cursor:pointer;user-select:none;transition:background .2s}
+.acc-header:hover{background:var(--cream)}
+.acc-emoji{font-size:1.3rem;flex-shrink:0}
+.acc-title{font-weight:700;color:var(--primary);font-size:.9rem;flex:1}
+.acc-arrow{color:var(--lilly);font-size:1rem;transition:transform .3s}
+.acc-item.open .acc-arrow{transform:rotate(180deg)}
+.acc-body{max-height:0;overflow:hidden;transition:max-height .35s ease;padding:0 1.4rem}
+.acc-item.open .acc-body{max-height:600px}
+.acc-body-inner{padding-bottom:1.4rem}
+.acc-body p{color:var(--grey);font-size:.9rem;line-height:1.8;margin-bottom:.7rem}
+.acc-body a{color:var(--lilly);font-weight:600;text-decoration:none}
+.acc-body a:hover{text-decoration:underline}
+.acc-body strong{color:var(--primary)}
+.acc-example{margin-top:.7rem;background:var(--cream);border-radius:7px;padding:10px 14px;font-size:.84rem;color:var(--primary);border-left:3px solid var(--lilly)}
+.acc-example strong{display:block;margin-bottom:3px;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--lilly)}
+
+/* ── TIPS STRIP ── */
+.tips-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin:2rem 0}
+.tip-item{background:var(--primary);border-radius:10px;padding:1.3rem;position:relative;overflow:hidden}
+.tip-item::before{content:'';position:absolute;top:-20px;right:-20px;width:70px;height:70px;border-radius:50%;background:rgba(212,160,23,.2)}
+.tip-icon{font-size:1.4rem;margin-bottom:.7rem}
+.tip-head{color:var(--gold);font-size:.78rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;margin-bottom:5px}
+.tip-body{color:rgba(255,255,255,.8);font-size:.8rem;line-height:1.6}
+
+/* ── DISCOUNT CARDS ── */
+.discount-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.2rem;margin:1.8rem 0}
+.discount-card{border-radius:12px;padding:1.5rem;border:1px solid rgba(0,0,0,.07);background:var(--white);box-shadow:0 3px 16px rgba(46,71,86,.07);transition:transform .2s,box-shadow .2s}
+.discount-card:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.dc-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:.8rem}
+.dc-name{font-weight:700;color:var(--primary);font-size:.98rem}
+.dc-badge{background:var(--orange);color:var(--white);font-size:.68rem;font-weight:700;padding:2px 8px;border-radius:100px;letter-spacing:.04em}
+.dc-badge.free{background:var(--olive);color:var(--white)}
+.dc-badge.paid{background:var(--lilly)}
+.dc-desc{font-size:.84rem;color:var(--grey);line-height:1.65;margin-bottom:.9rem}
+.dc-link{font-size:.78rem;color:var(--lilly);font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:4px}
+.dc-link:hover{color:var(--rose)}
+
+/* ── CLOSING BANNER ── */
+.closing-banner{background:linear-gradient(135deg,var(--primary),var(--lilly));border-radius:18px;padding:3.2rem 2.8rem;text-align:center;margin:4rem 0;position:relative;overflow:hidden}
+.closing-banner::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 80% 50%,rgba(213,140,175,.22),transparent 60%)}
+.closing-banner h2{font-family:'Playfair Display',serif;color:var(--white);font-size:1.9rem;margin-bottom:.9rem;position:relative}
+.closing-banner p{color:rgba(255,255,255,.78);font-size:.98rem;line-height:1.72;max-width:560px;margin:0 auto 1.8rem;position:relative}
+
+/* ── FOOTER ── */
+footer{background:var(--primary);color:rgba(255,255,255,.6);text-align:center;padding:2rem;font-size:.8rem}
+footer strong{color:var(--gold)}
+
+/* ── TABLE ── */
+.data-table{width:100%;border-collapse:collapse;margin:1.6rem 0;border-radius:10px;overflow:hidden;box-shadow:0 2px 16px rgba(46,71,86,.08)}
+.data-table thead{background:var(--primary)}
+.data-table th{padding:10px 14px;font-size:.78rem;font-weight:700;color:var(--gold);letter-spacing:.06em;text-transform:uppercase;text-align:left}
+.data-table td{padding:10px 14px;font-size:.86rem;color:var(--grey);border-bottom:1px solid rgba(0,0,0,.05);background:var(--white)}
+.data-table tr:nth-child(even) td{background:var(--offwhite)}
+.data-table tr:last-child td{border-bottom:none}
+.data-table a{color:var(--lilly);font-weight:600;text-decoration:none}
+.data-table a:hover{text-decoration:underline}
+.data-table strong{color:var(--primary)}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.fade-in{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){.hero-content{grid-template-columns:1fr;gap:2rem}.feature-card{grid-template-columns:1fr}.feature-card.reverse{direction:ltr}.nav-links{display:none}}
+@media(max-width:600px){nav{padding:0 1rem}main{padding:0 1rem}.hero-content{padding:2rem 1rem}.closing-banner{padding:2.2rem 1.4rem}.hero-stats{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+
+<div id="progress-bar"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo"><span>ATB</span> UK Life Admin Guide</div>
+  <ul class="nav-links">
+    <li><a href="#housing">Housing</a></li>
+    <li><a href="#work">Work Rights</a></li>
+    <li><a href="#calendar">Academic Year</a></li>
+    <li><a href="#admin">Life Admin</a></li>
+    <li><a href="#money">Money</a></li>
+    <li><a href="#tech">Tech & Discounts</a></li>
+    <li><a href="#food">Food Delivery</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div>
+      <div class="hero-eyebrow">UK Student Admin Guide · Across the Border CIC</div>
+      <h1 class="hero-title">The Admin Side of <em>Student Life</em> in the <span>UK</span></h1>
+      <p class="hero-sub">Housing, work rights, money transfers, discount apps, academic calendars and everything in between — a practical, comprehensive guide to navigating the systems that make UK student life work.</p>
+      <div class="hero-ctas">
+        <a href="#housing" class="btn-primary">▶ Start Reading</a>
+        <a href="https://acrosstheborder.org" class="btn-outline" target="_blank">↗ Visit Across the Border CIC</a>
+      </div>
+    </div>
+    <div>
+      <div class="hero-stats">
+        <div class="stat-card">
+          <div class="stat-num">20hrs</div>
+          <div class="stat-lbl">Maximum term-time work for degree-level students</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">£0</div>
+          <div class="stat-lbl">Council Tax owed by full-time students — but you must apply for exemption</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">3yrs</div>
+          <div class="stat-lbl">Free Deliveroo Plus Silver available to verified students</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">Mon–Sun</div>
+          <div class="stat-lbl">How the Home Office counts your working week — not Mon–Fri</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION NAV -->
+<div class="section-nav">
+  <div class="section-nav-inner">
+    <a href="#housing"  class="sec-pill">🏠 Housing</a>
+    <a href="#work"     class="sec-pill">💼 Work Rights</a>
+    <a href="#calendar" class="sec-pill">📅 Academic Year</a>
+    <a href="#admin"    class="sec-pill">📋 Life Admin</a>
+    <a href="#money"    class="sec-pill">💸 Money</a>
+    <a href="#tech"     class="sec-pill">📱 Tech & Discounts</a>
+    <a href="#food"     class="sec-pill">🍕 Food Delivery</a>
+  </div>
+</div>
+
+<main>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- SECTION 1 — HOUSING -->
+<!-- ═══════════════════════════════════════════════════ -->
+<section class="section-block fade-in" id="housing">
+  <div class="section-header">
+    <div class="section-tag">Section 1</div>
+    <h2 class="section-title">Finding Accommodation in the UK</h2>
+    <p class="section-intro">Most students begin in university-managed halls — a brilliant first choice. But for Year 2 onwards, summer stays, or private living, you'll need to navigate the wider housing market. Here's everything you need to know.</p>
+  </div>
+
+  <!-- Feature: University Halls -->
+  <div class="feature-card fade-in">
+    <div class="feature-accent" style="background:linear-gradient(135deg,var(--primary),var(--lilly))">
+      <div class="feature-icon">🏫</div>
+      <div class="feature-accent-title">Start with University-Managed Halls</div>
+    </div>
+    <div class="feature-body">
+      <h3>Why Halls Are the Best First Move</h3>
+      <p>University-managed halls of residence are almost always the smartest first-year choice. Bills are often included (electricity, internet, water), maintenance is handled for you, and you're surrounded by other students navigating the same experience. Most universities guarantee a place for first-year international students — check your university's accommodation portal as soon as you accept your offer.</p>
+      <div class="tip-badge">Apply to university accommodation as early as possible — places fill up fast, especially for international students arriving late.</div>
+      <a href="https://www.ucas.com/student-life/student-finance/student-accommodation-guide" target="_blank" class="link-btn" style="margin-top:1rem">→ UCAS Student Accommodation Guide</a>
+    </div>
+  </div>
+
+  <!-- PBSA Providers -->
+  <h3 class="section-title" style="font-size:1.5rem;margin:2rem 0 1rem">Purpose-Built Student Accommodation (PBSA)</h3>
+  <p style="color:var(--grey);line-height:1.8;margin-bottom:1.5rem;font-size:.95rem">When university halls aren't available or you want something more independent, Purpose-Built Student Accommodation is the next best thing. These are professionally managed buildings designed specifically for students — all bills included, communal spaces, and 24-hour security.</p>
+
+  <div class="sites-grid">
+    <a href="https://www.unitestudents.com" target="_blank" class="site-card" style="border-top-color:var(--lilly)">
+      <div class="site-card-header">
+        <div class="site-icon" style="background:rgba(26,105,178,.1)">🏢</div>
+        <div><div class="site-name">Unite Students</div><div class="site-type">PBSA Provider</div></div>
+      </div>
+      <p class="site-desc">The UK's largest PBSA provider with properties across 25+ cities. All-inclusive bills, high-speed WiFi, study rooms, and summer stay options. Ideal for students who want certainty and simplicity.</p>
+      <span class="site-link">unitestudents.com ↗</span>
+    </a>
+
+    <a href="https://www.iqstudentaccommodation.com" target="_blank" class="site-card" style="border-top-color:var(--rose)">
+      <div class="site-card-header">
+        <div class="site-icon" style="background:rgba(152,20,81,.1)">🏙️</div>
+        <div><div class="site-name">iQ Student Accommodation</div><div class="site-type">PBSA Provider</div></div>
+      </div>
+      <p class="site-desc">Modern studios and cluster flats in most major UK cities. Known for social events, gym facilities, and flexible contract lengths — including 43-week and 51-week options.</p>
+      <span class="site-link">iqstudentaccommodation.com ↗</span>
+    </a>
+
+    <a href="https://www.collegiate-ac.com" target="_blank" class="site-card" style="border-top-color:var(--gold)">
+      <div class="site-card-header">
+        <div class="site-icon" style="background:rgba(212,160,23,.1)">⭐</div>
+        <div><div class="site-name">Collegiate</div><div class="site-type">Premium PBSA</div></div>
+      </div>
+      <p class="site-desc">A premium option for students who want hotel-level amenities — concierge services, cinema rooms, gym, and rooftop spaces. Available in London, Oxford, Bristol, and Edinburgh.</p>
+      <span class="site-link">collegiate-ac.com ↗</span>
+    </a>
+  </div>
+
+  <!-- Private Rentals -->
+  <div class="feature-card reverse fade-in" style="margin-top:2rem">
+    <div class="feature-accent" style="background:linear-gradient(135deg,var(--rose),#6b0d38)">
+      <div class="feature-icon">🔑</div>
+      <div class="feature-accent-title">Private Rentals — What to Know</div>
+    </div>
+    <div class="feature-body">
+      <h3>Navigating the Private Rental Market</h3>
+      <p>From Year 2 onwards, many students move into private housing — typically shared houses known as HMOs (Houses in Multiple Occupation). The key platforms are <a href="https://www.rightmove.co.uk" target="_blank">Rightmove</a> and <a href="https://www.zoopla.co.uk" target="_blank">Zoopla</a>. Use the "Student" or "HMO" filter when searching, and always view properties in person before signing anything.</p>
+      <p>For single rooms or short-term summer lets, <a href="https://www.spareroom.co.uk" target="_blank">SpareRoom</a> is the most popular platform. Use "short term" or "summer" tags to filter appropriately.</p>
+      <div class="callout rose" style="margin-top:.5rem">
+        <div class="callout-icon">⚠️</div>
+        <div class="callout-body">
+          <h4>Right to Rent — This is a Legal Requirement</h4>
+          <p>In England, landlords must verify your immigration status before you move in. You will need to provide a <strong>Share Code</strong> (generated from your eVisa or BRP) to prove your right to rent. Generate yours at <a href="https://www.gov.uk/view-right-to-rent" target="_blank">gov.uk/view-right-to-rent ↗</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion fade-in">
+    <div class="acc-item">
+      <div class="acc-header" onclick="toggleAcc(this)">
+        <div class="acc-emoji">📋</div>
+        <div class="acc-title">What to check before signing a tenancy agreement</div>
+        <div class="acc-arrow">▾</div>
+      </div>
+      <div class="acc-body"><div class="acc-body-inner">
+        <p>Before you sign anything, read the tenancy agreement carefully. Key things to check: how long is the contract (usually 12 months), is there a break clause, who is responsible for repairs, what is included in the rent, and what is the deposit amount.</p>
+        <p><strong>Deposit protection:</strong> Your landlord is legally required to protect your deposit in a government-approved scheme within 30 days. The three schemes are <a href="https://www.depositprotection.com" target="_blank">DPS</a>, <a href="https://www.mydeposits.co.uk" target="_blank">MyDeposits</a>, and <a href="https://www.tenancydepositscheme.com" target="_blank">TDS</a>. If they don't, you can claim compensation.</p>
+        <div class="acc-example"><strong>Useful tool</strong>Shelter England has a free tenancy agreement checker: <a href="https://england.shelter.org.uk/housing_advice/renting_privately" target="_blank">shelter.org.uk ↗</a></div>
+      </div></div>
+    </div>
+    <div class="acc-item">
+      <div class="acc-header" onclick="toggleAcc(this)">
+        <div class="acc-emoji">🏖️</div>
+        <div class="acc-title">Finding summer accommodation between academic years</div>
+        <div class="acc-arrow">▾</div>
+      </div>
+      <div class="acc-body"><div class="acc-body-inner">
+        <p>University halls typically end contracts in June or July. If you need somewhere to stay over summer — especially if you're working or doing a placement — your options are: extending your PBSA contract (Unite and iQ both offer this), finding a summer sub-let on <a href="https://www.spareroom.co.uk" target="_blank">SpareRoom</a>, or checking if your university offers a reduced-rate summer stay programme.</p>
+        <div class="acc-example"><strong>Pro tip</strong>Some universities offer international students priority access to summer accommodation. Email your accommodation office in February or March — don't leave it until May.</div>
+      </div></div>
+    </div>
+    <div class="acc-item">
+      <div class="acc-header" onclick="toggleAcc(this)">
+        <div class="acc-emoji">💡</div>
+        <div class="acc-title">Bills, utilities, and what "all-inclusive" actually means</div>
+        <div class="acc-arrow">▾</div>
+      </div>
+      <div class="acc-body"><div class="acc-body-inner">
+        <p>PBSA and university halls typically include electricity, heating, water, and WiFi in the rent. In private rentals, you usually pay rent separately from bills. A common arrangement is to use a bill-splitting service like <a href="https://www.splittable.co" target="_blank">Splittable</a> or <a href="https://www.splitwise.com" target="_blank">Splitwise</a> with housemates.</p>
+        <p><strong>Energy bills:</strong> Compare tariffs at <a href="https://www.uswitch.com" target="_blank">Uswitch</a> or <a href="https://www.moneysupermarket.com/gas-and-electricity" target="_blank">MoneySuperMarket</a>. For broadband, <a href="https://www.savethe student.org/accommodation/cheap-broadband-students" target="_blank">Save the Student</a> regularly updates the cheapest student broadband deals.</p>
+        <div class="acc-example"><strong>Remember</strong>Even in private rentals, full-time students are exempt from Council Tax. You'll still need to apply — see the Life Admin section below.</div>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- SECTION 2 — WORK RIGHTS -->
+<!-- ═══════════════════════════════════════════════════ -->
+<section class="section-block fade-in" id="work">
+  <div class="section-header">
+    <div class="section-tag">Section 2</div>
+    <h2 class="section-title">Work Rights & Employment</h2>
+    <p class="section-intro">As an international student, your BRP or digital immigration status (eVisa) defines exactly how many hours you can work. Getting this right is critical — breaches can have serious visa consequences.</p>
+  </div>
+
+  <!-- Work limits table -->
+  <div class="dark-panel fade-in">
+    <h3>Your Working Hours at a Glance</h3>
+    <table class="data-table" style="margin-top:1rem">
+      <thead><tr><th>Study Level</th><th>Term-Time Limit</th><th>Vacation / Breaks</th><th>Week Runs</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Degree Level (undergraduate & postgraduate)</strong></td><td>20 hours per week</td><td>Full-time (no limit)</td><td>Monday to Sunday</td></tr>
+        <tr><td><strong>Below Degree Level (foundation, A-level equivalent)</strong></td><td>10 hours per week</td><td>Full-time (no limit)</td><td>Monday to Sunday</td></tr>
+        <tr><td><strong>All students — vacation periods</strong></td><td>No restriction</td><td>Full-time permitted</td><td>Monday to Sunday</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:1rem;font-size:.84rem;color:rgba(255,255,255,.6)">⚠️ The Home Office counts your working week Monday to Sunday — not Monday to Friday. Exceeding your limit by even one hour is technically a visa breach. Keep a weekly record of your hours.</p>
+  </div>
+
+  <!-- Two column features -->
+  <div class="cards-3" style="grid-template-columns:1fr 1fr;gap:1.8rem;margin-top:2rem">
+
+    <div class="info-card blue fade-in" style="padding:2rem">
+      <div class="info-card-icon">🖥️</div>
+      <h3>Proving Your Right to Work</h3>
+      <p>Every employer in the UK is legally required to check that you have the right to work before you start. You generate a <strong>Share Code</strong> which your employer uses to verify your status online — you don't hand over your physical BRP.</p>
+      <p style="margin-top:.8rem">Generate your Share Code at:</p>
+      <a href="https://www.gov.uk/prove-right-to-work" target="_blank" class="link-btn" style="margin-top:.5rem">→ gov.uk/prove-right-to-work</a>
+      <div class="tip-badge">Share Codes expire after 90 days. Generate a fresh one when starting each new job.</div>
+    </div>
+
+    <div class="info-card rose fade-in" style="padding:2rem">
+      <div class="info-card-icon">🔢</div>
+      <h3>National Insurance (NI) Number</h3>
+      <p>A National Insurance number is your unique identifier for the UK tax and benefits system. You <strong>must</strong> have one to work legally and ensure your tax contributions are recorded correctly against your name.</p>
+      <p style="margin-top:.8rem">Apply online — it's free and takes around 20 minutes:</p>
+      <a href="https://www.gov.uk/apply-national-insurance-number" target="_blank" class="link-btn" style="margin-top:.5rem;background:var(--rose)">→ Apply for NI Number</a>
+      <div class="tip-badge">Apply as soon as you arrive — processing can take several weeks and you'll need it before your first payslip.</div>
+    </div>
+  </div>
+
+  <div class="accordion fade-in" style="margin-top:1.5rem">
+    <div class="acc-item">
+      <div class="acc-header" onclick="toggleAcc(this)">
+        <div class="acc-emoji">💰</div>
+        <div class="acc-title">Understanding your payslip and tax codes</div>
+        <div class="acc-arrow">▾</div>
+      </div>
+      <div class="acc-body"><div class="acc-body-inner">
+        <p>Your payslip will show your gross pay (before tax) and net pay (after tax and National Insurance deductions). Your <strong>tax code</strong> tells your employer how much income tax to deduct. The most common code for students is <strong>1257L</strong>, which means you can earn up to £12,570 per year before paying income tax.</p>
+        <p>If you think you've been taxed incorrectly, contact HMRC directly or use the GOV.UK income tax calculator to check.</p>
+        <div class="acc-example"><strong>Useful link</strong><a href="https://www.gov.uk/check-income-tax-current-year" target="_blank">Check your current income tax — gov.uk ↗</a></div>
+      </div></div>
+    </div>
+    <div class="acc-item">
+      <div class="acc-header" onclick="toggleAcc(this)">
+        <div class="acc-emoji">📍</div>
+        <div class="acc-title">Where to find part-time jobs as an international student</div>
+        <div class="acc-arrow">▾</div>
+      </div>
+      <div class="acc-body"><div class="acc-body-inner">
+        <p>The best starting points for part-time work: your university's own jobs board (usually listed in the student portal), <a href="https://www.indeed.co.uk" target="_blank">Indeed.co.uk</a>, <a href="https://uk.linkedin.com/jobs" target="_blank">LinkedIn Jobs</a>, and <a href="https://www.totaljobs.com" target="_blank">Totaljobs</a>. For casual or flexible work, apps like <a href="https://www.taskrabbit.co.uk" target="_blank">TaskRabbit</a>, <a href="https://www.tempr.co.uk" target="_blank">Tempr</a>, and <a href="https://www.studentjob.co.uk" target="_blank">StudentJob.co.uk</a> are worth checking.</p>
+        <div class="acc-example"><strong>On-campus jobs are easiest first</strong>University libraries, cafeterias, student unions, and admin departments all hire students. They're flexible, understand your schedule, and guaranteed to be term-time aware.</div>
+      </div></div>
+    </div>
+    <div class="acc-item">
+      <div class="acc-header" onclick="toggleAcc(this)">
+        <div class="acc-emoji">🎓</div>
+        <div class="acc-title">Placements, internships and graduate schemes</div>
+        <div class="acc-arrow">▾</div>
+      </div>
+      <div class="acc-body"><div class="acc-body-inner">
+        <p>A placement year (usually Year 3 of a 4-year course) or a summer internship can dramatically improve your graduate prospects. Most major UK employers run formal schemes — apply early, usually in October or November of the year before the placement.</p>
+        <p>Key platforms: <a href="https://www.ratemyplacement.co.uk" target="_blank">RateMyPlacement</a>, <a href="https://www.prospects.ac.uk" target="_blank">Prospects.ac.uk</a>, <a href="https://www.milkround.com" target="_blank">Milkround</a>, and your university careers service. Many graduate schemes also accept applications from international students — always check the visa sponsorship status before applying.</p>
+        <div class="acc-example"><strong>Visa sponsorship</strong>After graduation, the Graduate Visa allows you to stay in the UK for 2 years (3 years for PhD graduates) to work or look for work. Your employer may then sponsor a Skilled Worker visa. <a href="https://www.gov.uk/graduate-visa" target="_blank">Learn more ↗</a></div>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="pull-quote fade-in">
+    <p>"Keeping a simple weekly spreadsheet of your work hours is the single most important thing you can do to protect your visa. It takes 2 minutes and could save you everything."</p>
+    <cite>— Across the Border CIC</cite>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- SECTION 3 — ACADEMIC CALENDAR -->
+<!-- ═══════════════════════════════════════════════════ -->
+<section class="section-block fade-in" id="calendar">
+  <div class="section-header">
+    <div class="section-tag">Section 3</div>
+    <h2 class="section-title">The UK Academic Calendar</h2>
+    <p class="section-intro">The UK academic year follows a three-term structure. Understanding this is essential because your working rights change during vacations — and knowing when exams and deadlines cluster helps you plan your life far in advance.</p>
+  </div>
+
+  <div class="cards-3 fade-in">
+    <div class="info-card blue">
+      <div class="info-card-icon">🍂</div>
+      <h3>Autumn Term (Semester 1)</h3>
+      <p><strong>Roughly:</strong> Late September to mid-December<br><br>This is when your academic year begins. Freshers' Week (or Welcome Week) is the very first week — a series of social events, orientations, and enrolment activities. Your first set of assessments or coursework deadlines usually fall in November or December.</p>
+      <div class="tip-badge">Christmas vacation (mid-December to mid-January) counts as a full vacation — you can work full-time during this period.</div>
+    </div>
+    <div class="info-card gold">
+      <div class="info-card-icon">🌱</div>
+      <h3>Spring Term (Semester 2)</h3>
+      <p><strong>Roughly:</strong> Mid-January to late March<br><br>The second term usually ends before Easter. Some universities have a "Reading Week" mid-February — this is still technically term-time, so your 20-hour work limit still applies. Do not work full-time during Reading Week.</p>
+      <div class="tip-badge">Easter vacation (late March to late April) is a full vacation period — full-time work permitted.</div>
+    </div>
+    <div class="info-card orange">
+      <div class="info-card-icon">☀️</div>
+      <h3>Summer Term</h3>
+      <p><strong>Roughly:</strong> Late April to mid-June<br><br>The summer term is primarily for exams and dissertation submissions. Teaching has usually ended, but if you are still registered as a student and your institution is in term-time, your 20-hour limit still applies until your last official exam date.</p>
+      <div class="tip-badge">Summer vacation (from your final exam onwards) is your longest vacation — full-time work permitted until late September.</div>
+    </div>
+  </div>
+
+  <div class="callout navy fade-in">
+    <div class="callout-icon">📌</div>
+    <div class="callout-body">
+      <h4>Always Check Your University's Specific Dates</h4>
+      <p>Every university sets its own term dates and these can vary by several weeks. Always find the "Key Dates" or "Term Dates" page on your university's website and save it somewhere you can easily access. <strong>Never assume</strong> you're in vacation based on a general estimate — verify it.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- SECTION 4 — LIFE ADMIN -->
+<!-- ═══════════════════════════════════════════════════ -->
+<section class="section-block fade-in" id="admin">
+  <div class="section-header">
+    <div class="section-tag">Section 4</div>
+    <h2 class="section-title">Essential Life Admin</h2>
+    <p class="section-intro">Beyond banking and healthcare (covered in our Culture Shock guide), there are several other critical admin tasks that every international student needs to handle. None of them are difficult — but all of them have consequences if ignored.</p>
+  </div>
+
+  <div class="tips-strip fade-in">
+    <div class="tip-item">
+      <div class="tip-icon">🏛️</div>
+      <div class="tip-head">Council Tax</div>
+      <div class="tip-body">Full-time students are exempt. But you must apply — it doesn't happen automatically.</div>
+    </div>
+    <div class="tip-item">
+      <div class="tip-icon">📺</div>
+      <div class="tip-head">TV Licence</div>
+      <div class="tip-body">Only needed if you watch live TV or BBC iPlayer. If you only use Netflix/YouTube — declare it online.</div>
+    </div>
+    <div class="tip-item">
+      <div class="tip-icon">🎓</div>
+      <div class="tip-head">UKCISA</div>
+      <div class="tip-head">The gold standard for visa, fee, and mental health advice for international students in the UK.</div>
+    </div>
+    <div class="tip-item">
+      <div class="tip-icon">💰</div>
+      <div class="tip-head">Student Discounts</div>
+      <div class="tip-body">TOTUM, UNiDAYS, and Student Beans give you discounts worth hundreds of pounds per year — all free to join.</div>
+    </div>
+  </div>
+
+  <!-- Council Tax -->
+  <div class="feature-card fade-in" style="margin-top:2rem">
+    <div class="feature-accent" style="background:linear-gradient(135deg,var(--primary),#1A3D52)">
+      <div class="feature-icon">🏛️</div>
+      <div class="feature-accent-title">Council Tax Exemption</div>
+    </div>
+    <div class="feature-body">
+      <h3>Full-Time Students Don't Pay Council Tax</h3>
+      <p>Council Tax is a local authority charge that funds services like rubbish collection, libraries, and emergency services. Full-time students are legally exempt — but the exemption is not automatic. You need to actively apply.</p>
+      <p><strong>How to apply:</strong> Download a "Student Status Letter" or "Council Tax Exemption Certificate" from your university's student portal (usually under "Student Services" or "My Documents"). Then submit it to your local council. Search for your council at <a href="https://www.gov.uk/pay-council-tax" target="_blank">gov.uk ↗</a>.</p>
+      <div class="callout navy" style="margin-top:.8rem;padding:1rem 1.2rem">
+        <div class="callout-icon">⚠️</div>
+        <div class="callout-body">
+          <h4>Mixed Households</h4>
+          <p>If you live with even one non-student (e.g. a working professional or gap-year housemate), the household loses its full exemption. The non-student will still have to pay — but your exemption as a student still reduces their bill by 25%.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TV Licence -->
+  <div class="feature-card reverse fade-in">
+    <div class="feature-accent" style="background:linear-gradient(135deg,var(--rose),#6b0d38)">
+      <div class="feature-icon">📺</div>
+      <div class="feature-accent-title">TV Licensing — What You Need to Know</div>
+    </div>
+    <div class="feature-body">
+      <h3>Do You Actually Need a TV Licence?</h3>
+      <p>This confuses a lot of students. The TV Licence (currently <strong>£174.50 per year</strong>) is legally required if you watch <strong>any live television</strong> on any device — a phone, laptop, tablet, or TV — regardless of which channel. It also applies if you use <strong>BBC iPlayer</strong>, even to watch programmes after they've aired.</p>
+      <p><strong>You do NOT need a licence</strong> if you only use Netflix, Disney+, Amazon Prime, YouTube, or any other streaming service that doesn't include live TV. However, you must declare this on the TV Licensing website to stop receiving enforcement letters.</p>
+      <a href="https://www.tvlicensing.co.uk/check-if-you-need-one" target="_blank" class="link-btn" style="background:var(--rose);margin-top:.5rem">→ Check if You Need a TV Licence</a>
+      <a href="https://www.tvlicensing.co.uk/do-i-need-one/for-your-home/i-dont-watch-live-tv-or-use-bbc-iplayer-DF3" target="_blank" class="link-btn" style="background:var(--olive);margin-top:.5rem">→ Declare You Don't Need One</a>
+    </div>
+  </div>
+
+  <!-- UKCISA + Save the Student -->
+  <h3 class="section-title" style="font-size:1.4rem;margin:2rem 0 1rem">The Most Useful Advisory Websites</h3>
+  <div class="sites-grid">
+    <a href="https://www.ukcisa.org.uk" target="_blank" class="site-card" style="border-top-color:var(--lilly)">
+      <div class="site-card-header">
+        <div class="site-icon" style="background:rgba(26,105,178,.1)">🎓</div>
+        <div><div class="site-name">UKCISA</div><div class="site-type">Official Advisory Body</div></div>
+      </div>
+      <p class="site-desc">The UK Council for International Student Affairs is the gold standard for advice on visas, tuition fees, working rights, and mental health. Run a helpline, publish detailed guides, and campaign for international student rights. Use this before making any visa or fee-related decision.</p>
+      <span class="site-link">ukcisa.org.uk ↗</span>
+    </a>
+
+    <a href="https://www.savethestudent.org" target="_blank" class="site-card" style="border-top-color:var(--gold)">
+      <div class="site-card-header">
+        <div class="site-icon" style="background:rgba(212,160,23,.1)">💡</div>
+        <div><div class="site-name">Save the Student</div><div class="site-type">Student Finance Guide</div></div>
+      </div>
+      <p class="site-desc">An excellent independent website covering student discounts, cheap broadband, best student bank accounts, budgeting tips, and deals updated daily. Not official, but incredibly practical. Bookmark it.</p>
+      <span class="site-link">savethestudent.org ↗</span>
+    </a>
+
+    <a href="https://www.citizensadvice.org.uk" target="_blank" class="site-card" style="border-top-color:var(--olive)">
+      <div class="site-card-header">
+        <div class="site-icon" style="background:rgba(165,170,128,.15)">⚖️</div>
+        <div><div class="site-name">Citizens Advice</div><div class="site-type">Free Legal & Financial Advice</div></div>
+      </div>
+      <p class="site-desc">Free, impartial advice on legal issues, tenancy disputes, employment rights, benefits, and more. Available online or in person at local Citizens Advice bureaux. An essential safety net if things go wrong.</p>
+      <span class="site-link">citizensadvice.org.uk ↗</span>
+    </a>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- SECTION 5 — MONEY -->
+<!-- ═══════════════════════════════════════════════════ -->
+<section class="section-block fade-in" id="money">
+  <div class="section-header">
+    <div class="section-tag">Section 5</div>
+    <h2 class="section-title">Money, Transfers & Budgeting</h2>
+    <p class="section-intro">Managing money across two countries, two currencies, and two banking systems is one of the real practical challenges of being an international student. Here's how to make your money go further.</p>
+  </div>
+
+  <!-- Money transfer -->
+  <div class="feature-card fade-in">
+    <div class="feature-accent" style="background:linear-gradient(135deg,var(--olive),#7a7d60)">
+      <div class="feature-icon">💸</div>
+      <div class="feature-accent-title">Sending & Receiving Money from Home</div>
+    </div>
+    <div class="feature-body">
+      <h3>Never Use a Bank Transfer to Send Money Internationally</h3>
+      <p>Traditional bank-to-bank international transfers are one of the most expensive ways to move money. Banks typically add a margin of 3–5% on top of the mid-market exchange rate — which on a transfer of £5,000 could cost you £150–£250 in hidden fees alone.</p>
+      <p>Instead, use a specialist money transfer service:</p>
+      <div class="sites-grid" style="grid-template-columns:1fr 1fr;gap:1rem;margin:.8rem 0">
+        <a href="https://wise.com/gb" target="_blank" class="site-card" style="border-top-color:var(--olive);padding:1rem">
+          <div class="site-name" style="margin-bottom:.4rem">💚 Wise (formerly TransferWise)</div>
+          <p class="site-desc" style="font-size:.8rem">Uses the real mid-market rate with a small, transparent fee. One of the cheapest options available. Also offers a multi-currency account and debit card.</p>
+          <span class="site-link">wise.com ↗</span>
+        </a>
+        <a href="https://www.atlanticmoney.com" target="_blank" class="site-card" style="border-top-color:var(--lilly);padding:1rem">
+          <div class="site-name" style="margin-bottom:.4rem">💙 Atlantic Money</div>
+          <p class="site-desc" style="font-size:.8rem">Flat fee of £3 per transfer regardless of amount — makes it especially cost-effective for larger transfers from home. Available on iOS and Android.</p>
+          <span class="site-link">atlanticmoney.com ↗</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Splitwise and budgeting -->
+  <div class="cards-3 fade-in">
+    <div class="info-card blue">
+      <div class="info-card-icon">🤝</div>
+      <h3>Splitting Bills with Housemates</h3>
+      <p><a href="https://www.splitwise.com" target="_blank">Splitwise</a> is the standard UK tool for tracking shared house expenses — cleaning supplies, toilet roll, milk, internet, and other shared costs. Everyone adds what they spend and the app calculates who owes whom at the end of the month. Free, simple, and saves arguments.</p>
+    </div>
+    <div class="info-card gold">
+      <div class="info-card-icon">📊</div>
+      <h3>Student Budgeting Tools</h3>
+      <p><a href="https://monzo.com" target="_blank">Monzo</a> and <a href="https://www.revolut.com" target="_blank">Revolut</a> both have built-in budgeting features that automatically categorise your spending — groceries, eating out, transport, entertainment. Setting monthly spending limits takes 2 minutes and prevents the common end-of-term money panic.</p>
+    </div>
+    <div class="info-card rose">
+      <div class="info-card-icon">🛒</div>
+      <h3>Food Shopping on a Budget</h3>
+      <p>For affordable grocery shopping, <strong>Aldi</strong> and <strong>Lidl</strong> are consistently the cheapest. <strong>Tesco Clubcard</strong> and <strong>Sainsbury's Nectar</strong> loyalty schemes offer regular discounts. The <a href="https://www.toogoodtogo.com/en-gb" target="_blank">Too Good To Go</a> app lets you buy surplus food from restaurants and cafés at 70–90% off.</p>
+    </div>
+  </div>
+
+  <div class="callout gold fade-in">
+    <div class="callout-icon">💳</div>
+    <div class="callout-body">
+      <h4>The Best Student Bank Accounts in the UK</h4>
+      <p>Traditional high-street banks (Barclays, HSBC, NatWest, Santander) offer student accounts with interest-free overdrafts of up to £1,500 — useful in emergencies. For quick setup without a UK credit history, start with <a href="https://monzo.com" target="_blank">Monzo</a> or <a href="https://www.revolut.com" target="_blank">Revolut</a>, then apply for a student account once you have your university enrollment letter. Compare accounts at <a href="https://www.savethestudent.org/money/student-bank-accounts.html" target="_blank">Save the Student ↗</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- SECTION 6 — TECH & DISCOUNTS -->
+<!-- ═══════════════════════════════════════════════════ -->
+<section class="section-block fade-in" id="tech">
+  <div class="section-header">
+    <div class="section-tag">Section 6</div>
+    <h2 class="section-title">Useful Tech & Student Discounts</h2>
+    <p class="section-intro">Being a student in the UK unlocks hundreds of pounds of savings per year. These are the tools and apps that every international student should have set up in their first week — most are completely free.</p>
+  </div>
+
+  <!-- Discount cards -->
+  <h3 style="font-family:'Playfair Display',serif;color:var(--primary);font-size:1.3rem;margin-bottom:1.2rem">Free Discount Platforms — Set These Up Immediately</h3>
+  <div class="discount-grid fade-in">
+    <div class="discount-card">
+      <div class="dc-top"><div class="dc-name">UNiDAYS</div><div class="dc-badge free">FREE</div></div>
+      <p class="dc-desc">Verify your student email and get instant discount codes for Apple, Samsung, ASOS, Nike, Deliveroo, and dozens more. One of the most widely accepted student discount platforms in the UK.</p>
+      <a href="https://www.myunidays.com" target="_blank" class="dc-link">myunidays.com ↗</a>
+    </div>
+    <div class="discount-card">
+      <div class="dc-top"><div class="dc-name">Student Beans</div><div class="dc-badge free">FREE</div></div>
+      <p class="dc-desc">Similar to UNiDAYS but with different brand partnerships. Worth having both — some brands are on Student Beans only. Also offers discount codes for software like Adobe, Spotify, and Microsoft 365.</p>
+      <a href="https://www.studentbeans.com/uk" target="_blank" class="dc-link">studentbeans.com ↗</a>
+    </div>
+    <div class="discount-card">
+      <div class="dc-top"><div class="dc-name">TOTUM Card</div><div class="dc-badge paid">From £14.99/yr</div></div>
+      <p class="dc-desc">Unlike the free apps, TOTUM is a physical card. Its key advantage: it includes a <strong>PASS hologram</strong> — a legally recognised proof-of-age document in the UK. Use it at pubs, clubs, and anywhere that requires age verification instead of carrying your passport.</p>
+      <a href="https://www.totum.com" target="_blank" class="dc-link">totum.com ↗</a>
+    </div>
+    <div class="discount-card">
+      <div class="dc-top"><div class="dc-name">16–25 Railcard</div><div class="dc-badge paid">£30/yr</div></div>
+      <p class="dc-desc">Saves you <strong>⅓ off</strong> all rail travel in the UK. If you take the train more than a handful of times per year, this pays for itself very quickly. Also available as a 3-year card for £70.</p>
+      <a href="https://www.16-25railcard.co.uk" target="_blank" class="dc-link">16-25railcard.co.uk ↗</a>
+    </div>
+    <div class="discount-card">
+      <div class="dc-top"><div class="dc-name">Spotify Student</div><div class="dc-badge paid">~£5.99/mo</div></div>
+      <p class="dc-desc">Spotify Premium at half price for students — includes Hulu in the US but in the UK includes Spotify Premium only. Verify via Student Beans or SheerID. Widely available at most universities.</p>
+      <a href="https://www.spotify.com/uk/student" target="_blank" class="dc-link">spotify.com/uk/student ↗</a>
+    </div>
+    <div class="discount-card">
+      <div class="dc-top"><div class="dc-name">Apple / Microsoft Student</div><div class="dc-badge paid">Up to 25% off</div></div>
+      <p class="dc-desc">Apple offers student pricing on Macs, iPads, and accessories via UNiDAYS. Microsoft 365 is often free through your university — check your student portal. Adobe Creative Cloud also offers a significant student discount.</p>
+      <a href="https://www.apple.com/uk/shop/go/product/HMLED2LL" target="_blank" class="dc-link">Apple Education Store ↗</a>
+    </div>
+  </div>
+
+  <!-- Practical apps -->
+  <h3 style="font-family:'Playfair Display',serif;color:var(--primary);font-size:1.3rem;margin:2.5rem 0 1.2rem">Practical Life Apps Every Student Needs</h3>
+  <div class="cards-3 fade-in">
+    <div class="info-card blue">
+      <div class="info-card-icon">👗</div>
+      <h3>Second-Hand Shopping: Vinted & Depop</h3>
+      <p><a href="https://www.vinted.co.uk" target="_blank">Vinted</a> and <a href="https://www.depop.com" target="_blank">Depop</a> are the go-to platforms for buying affordable second-hand clothing, winter coats, kitchen equipment, and household items. Arriving in autumn and need a warm coat? You can find quality second-hand options for £10–£30 rather than spending £80+ in a shop.</p>
+    </div>
+    <div class="info-card olive">
+      <div class="info-card-icon">📱</div>
+      <h3>NHS App</h3>
+      <p>Once registered with a GP, download the <a href="https://www.nhs.uk/nhs-app" target="_blank">NHS App</a> to book and manage appointments, access prescriptions, view your health record, and get COVID certificates. It's also the quickest way to request a GP appointment without calling the surgery directly.</p>
+    </div>
+    <div class="info-card rose">
+      <div class="info-card-icon">🧺</div>
+      <h3>Splitwise — Shared House Finance</h3>
+      <p><a href="https://www.splitwise.com" target="_blank">Splitwise</a> tracks shared expenses with housemates automatically — who bought the washing up liquid, who paid the electricity top-up, who owes who for the takeaway. Prevents misunderstandings and keeps finances transparent between everyone in the house.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- SECTION 7 — FOOD DELIVERY -->
+<!-- ═══════════════════════════════════════════════════ -->
+<section class="section-block fade-in" id="food">
+  <div class="section-header">
+    <div class="section-tag">Section 7</div>
+    <h2 class="section-title">Food Delivery & Meal Apps</h2>
+    <p class="section-intro">Major food delivery platforms now offer significant student deals — some of the best value subscriptions available. Here's exactly what each platform offers and how to access the discount.</p>
+  </div>
+
+  <div class="discount-grid fade-in">
+    <div class="discount-card" style="border-top:4px solid var(--lilly)">
+      <div class="dc-top"><div class="dc-name">🛵 Deliveroo Students</div><div class="dc-badge free">FREE FOR 3 YEARS</div></div>
+      <p class="dc-desc">Verified students get <strong>Deliveroo Plus Silver free for up to three years</strong> — one of the best student deals available in the UK. Includes free delivery on restaurant orders over £15 and grocery orders over £25. Also includes exclusive 10% discounts at popular chains including Wingstop.</p>
+      <p class="dc-desc" style="margin-top:.5rem">Verify through UNiDAYS or Student Beans. Available to students at UK universities.</p>
+      <a href="https://deliveroo.co.uk/students" target="_blank" class="dc-link">deliveroo.co.uk/students ↗</a>
+    </div>
+
+    <div class="discount-card" style="border-top:4px solid var(--orange)">
+      <div class="dc-top"><div class="dc-name">🚗 Uber Eats</div><div class="dc-badge paid">Up to 50% off membership</div></div>
+      <p class="dc-desc">Uber Eats frequently offers <strong>50% off Uber One memberships</strong> via UNiDAYS — bringing the monthly cost significantly down. Uber One includes £0 delivery fees and up to 10% off "Uber One" marked orders.</p>
+      <p class="dc-desc" style="margin-top:.5rem"><strong>New customer codes:</strong> Often £10 off your first two orders. Always check the app or UNiDAYS for the latest codes before your first order.</p>
+      <a href="https://www.ubereats.com/gb" target="_blank" class="dc-link">ubereats.com ↗</a>
+    </div>
+
+    <div class="discount-card" style="border-top:4px solid var(--rose)">
+      <div class="dc-top"><div class="dc-name">🍕 Just Eat</div><div class="dc-badge paid">~£5.99 / 90 days</div></div>
+      <p class="dc-desc">Just Eat offers a <strong>"Just Eat+" membership</strong> (often around £5.99 for 90 days) which provides free delivery on orders over £15. A cost-effective option if you order regularly from Just Eat's large UK restaurant network.</p>
+      <p class="dc-desc" style="margin-top:.5rem">Check for student-specific codes on Student Beans before purchasing — discounted rates are sometimes available.</p>
+      <a href="https://www.just-eat.co.uk" target="_blank" class="dc-link">just-eat.co.uk ↗</a>
+    </div>
+  </div>
+
+  <div class="callout teal fade-in">
+    <div class="callout-icon">🍽️</div>
+    <div class="callout-body">
+      <h4>Cooking at Home Will Save You Significantly More</h4>
+      <p>Even with student discounts, regular food delivery adds up fast. A weekly meal plan — even a simple one — can cut your food spend by 60–70% compared to ordering regularly. The <a href="https://www.bbcgoodfood.com/recipes/collection/cheap-family-meals" target="_blank">BBC Good Food website</a> has a large collection of cheap, easy student meals. Batch cooking on Sundays (pasta sauces, rice dishes, soups) is the single most effective money-saving habit you can build.</p>
+    </div>
+  </div>
+
+  <div class="pull-quote fade-in">
+    <p>"The gap between what students spend and what they could spend, without any reduction in quality of life, is almost always food and subscriptions. A weekly meal plan and one shared streaming account is worth more than any part-time job shift."</p>
+    <cite>— Across the Border CIC</cite>
+  </div>
+</section>
+
+<!-- CLOSING BANNER -->
+<div class="closing-banner fade-in">
+  <h2>You've Got This — And We've Got You</h2>
+  <p>Across the Border CIC is here to support you through every stage of your UK journey — from your first week to graduation and beyond. Our peer-led buddy programme connects you with former international students who've navigated all of this themselves.</p>
+  <a href="mailto:info@acrosstheborder.org" class="btn-primary" style="position:relative">📩 Contact us — info@acrosstheborder.org</a>
+</div>
+
+</main>
+
+<footer>
+  <p>Created by <strong>Across the Border CIC</strong> — UK International Student Navigation Programme &nbsp;|&nbsp; Community Interest Company &nbsp;|&nbsp; NGO &nbsp;|&nbsp; Community Trust<br>
+  <span style="font-size:.72rem;margin-top:5px;display:block;opacity:.7">This guide is for informational purposes only. Always verify information with official UK government sources. Links open external websites.</span></p>
+</footer>
+
+<script>
+  // Progress bar
+  window.addEventListener('scroll', function() {
+    var s = window.scrollY, h = document.documentElement.scrollHeight - window.innerHeight;
+    document.getElementById('progress-bar').style.width = (h > 0 ? s/h*100 : 0) + '%';
+    updateNav();
+  }, { passive: true });
+
+  // Scroll-spy
+  function updateNav() {
+    var offset = 120;
+    var pills = document.querySelectorAll('.sec-pill, .nav-links a');
+    var best = null, bestTop = -Infinity;
+    pills.forEach(function(p) {
+      var id = p.getAttribute('href').replace('#','');
+      var el = document.getElementById(id);
+      if (!el) return;
+      var top = el.getBoundingClientRect().top;
+      if (top <= offset && top > bestTop) { bestTop = top; best = id; }
+    });
+    pills.forEach(function(p) {
+      var id = p.getAttribute('href').replace('#','');
+      p.classList.toggle('active', id === best);
+    });
+  }
+  updateNav();
+
+  // Fade-in
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e, i) {
+      if (e.isIntersecting) setTimeout(function(){ e.target.classList.add('visible'); }, i * 60);
+    });
+  }, { threshold: 0.07, rootMargin: '0px 0px -30px 0px' });
+  document.querySelectorAll('.fade-in').forEach(function(el){ io.observe(el); });
+
+  // Accordion
+  function toggleAcc(header) {
+    var item = header.parentElement;
+    var isOpen = item.classList.contains('open');
+    document.querySelectorAll('.acc-item').forEach(function(i){ i.classList.remove('open'); });
+    if (!isOpen) item.classList.add('open');
+  }
+</script>
+</body>
+</html>
